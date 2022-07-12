@@ -1,0 +1,23 @@
+{
+  "name": "demo_project",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "davidwang <davidwang7777@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/DavidWang85/vue-w1-00",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "vendors/"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "angular": "^1.8.3",
+    "bootstrap": "^3.3.7"
+  }
+}
