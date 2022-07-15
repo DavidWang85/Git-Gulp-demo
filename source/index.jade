@@ -1,12 +1,9 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
-        script(src="js/all.js")
-        link(rel="stylesheet", href="css/all.css")
-    body
-      br
-      p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti, excepturi sequi! Id maxime fuga adipisci! A tempore vel voluptate ipsa?
+extend layout.jade
+
+block content
+    h1: a(href="#"): span 連結
+    h2 #{menu.list[1].name}
+    .container
+        form(action="")
+            label(for="email") 請輸入email
+                input#email.form-control(type="text")

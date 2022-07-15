@@ -32,6 +32,15 @@ gulp.task('copyHTML', function () {
 gulp.task('jade', function () {
     gulp.src('./source/*.jade')
         .pipe($.plumber())
+        .pipe($.data(function () {
+            var trip = require("./source/data/data.json")
+            var menu = require("./source/data/menu.json");
+            var source = {
+                'trip': trip,
+                'menu': menu
+            };
+            return source;
+        }))
         .pipe($.jade({
             pretty: true
         }))
@@ -92,7 +101,7 @@ gulp.task('browser-sync', function () {
 //image-min套件範例
 gulp.task('image-min', () => 
     gulp.src('./source/images/*')
-        .pipe($.imagemin())
+        .pipe($.if(options.env === 'production', $.imagemin()))
         .pipe(gulp.dest('./public/images'))
 )
 // sequence套件範例
@@ -103,5 +112,10 @@ gulp.task('watch', function () {
     gulp.watch('./source/js/**/*.js', ['babel']);
     gulp.watch('./source/*.jade', ['jade']);
 });
+// gulp-gh-pages套件範例
+gulp.task('deploy', function () {
+    return gulp.src('./public/**/*')
+        .pipe($.ghPages());
+});
 //合併上述任務
-gulp.task('default', ['jade', 'sass', 'babel', 'vendorJs', 'browser-sync', 'watch']);
+gulp.task('default', ['jade', 'sass', 'babel', 'vendorJs', 'browser-sync', 'image-min', 'watch']);

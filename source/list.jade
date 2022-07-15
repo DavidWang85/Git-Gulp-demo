@@ -1,0 +1,11 @@
+extend layout.jade
+
+block content
+    each item in trip
+        .card(style='width: 18rem;')
+            img.card-img-top(src='#{item.imgUrl}' alt='photo')
+            .card-body
+                h5.card-title #{item.name}
+                p.card-text
+                    | #{item.description}
+                a.btn.btn-primary(href='#') 前往 #{item.area}
